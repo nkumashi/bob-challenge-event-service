@@ -7,6 +7,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import com.takeaway.eventservice.controller.EmployeeEventController;
 import com.takeaway.eventservice.hateos.model.EmployeeEventModel;
 import com.takeaway.eventservice.model.EmployeeEvent;
 
@@ -23,10 +24,10 @@ public class EmployeeEventModelAssembler extends RepresentationModelAssemblerSup
 	@Override
 	public EmployeeEventModel toModel(EmployeeEvent entity) {
 		EmployeeEventModel eventModel = instantiateModel(entity);
-//		eventModel.add(linkTo(
-//                methodOn(EmployeeEventController.class)
-//                .getDepartmentById(entity.getId()))
-//                .withSelfRel());
+		eventModel.add(linkTo(
+                methodOn(EmployeeEventController.class)
+                .getEmployeeEventById(entity.getId()))
+                .withSelfRel());
 							       
 		eventModel.setEventId(entity.getId());
 		eventModel.setEventName(entity.getName());		
@@ -37,7 +38,7 @@ public class EmployeeEventModelAssembler extends RepresentationModelAssemblerSup
 	@Override
     public CollectionModel<EmployeeEventModel> toCollectionModel(Iterable<? extends EmployeeEvent> entities) {
         CollectionModel<EmployeeEventModel> eventModels = super.toCollectionModel(entities);         
-        //eventModels.add(linkTo(methodOn(EmployeeEventController.class).getAllDepartments()).withSelfRel());         
+        eventModels.add(linkTo(methodOn(EmployeeEventController.class).getAllEmployeeEvents()).withSelfRel());         
         return eventModels;
     }
 }
