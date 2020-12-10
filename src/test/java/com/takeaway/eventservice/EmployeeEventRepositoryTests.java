@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -43,6 +44,7 @@ public class EmployeeEventRepositoryTests {
 	@Test
 	public void should_find_events() {
 		EmployeeEvent event = new EmployeeEvent("Dummy");
+		event.setEventTimestamp(LocalDateTime.now());
 		EmployeeEvent addedEvent = employeeEventRepository.save(event);
 		assertThat(addedEvent).hasFieldOrPropertyWithValue("name", "Dummy");				
 		
@@ -53,6 +55,7 @@ public class EmployeeEventRepositoryTests {
 	@Test
 	public void should_find_event_by_id() {
 		EmployeeEvent event = new EmployeeEvent("Dummy");
+		event.setEventTimestamp(LocalDateTime.now());
 		EmployeeEvent addedEvent = employeeEventRepository.save(event);
 		assertThat(addedEvent).hasFieldOrPropertyWithValue("name", "Dummy");				
 		
@@ -63,6 +66,7 @@ public class EmployeeEventRepositoryTests {
 	@Test
 	public void should_create_a_event() {
 		EmployeeEvent event = new EmployeeEvent("Dummy");
+		event.setEventTimestamp(LocalDateTime.now());
 		EmployeeEvent addedEvent = employeeEventRepository.save(event);
 		assertThat(addedEvent).hasFieldOrPropertyWithValue("name", "Dummy");
 		assertNotNull(addedEvent.getId());		
@@ -70,8 +74,9 @@ public class EmployeeEventRepositoryTests {
 	
 	@Test
 	public void should_update_an_event() {
-		EmployeeEvent department = new EmployeeEvent("Dummy");
-		EmployeeEvent addedEvent = employeeEventRepository.save(department);
+		EmployeeEvent event = new EmployeeEvent("Dummy");
+		event.setEventTimestamp(LocalDateTime.now());
+		EmployeeEvent addedEvent = employeeEventRepository.save(event);
 		assertThat(addedEvent).hasFieldOrPropertyWithValue("name", "Dummy");	
 		
 		addedEvent.setName("Latest name");
@@ -82,6 +87,7 @@ public class EmployeeEventRepositoryTests {
 	@Test
 	public void should_delete_an_event() {
 		EmployeeEvent event = new EmployeeEvent("Dummy");
+		event.setEventTimestamp(LocalDateTime.now());
 		EmployeeEvent addedEvent = employeeEventRepository.save(event);
 		assertThat(addedEvent).hasFieldOrPropertyWithValue("name", "Dummy");				
 		
