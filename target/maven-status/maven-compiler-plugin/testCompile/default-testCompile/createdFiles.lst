@@ -1,0 +1,3 @@
+com\takeaway\eventservice\EmployeeEventServiceTests.class
+com\takeaway\eventservice\EmployeeEventRepositoryTests.class
+com\takeaway\eventservice\EmployeeEventIntegrationTests.class

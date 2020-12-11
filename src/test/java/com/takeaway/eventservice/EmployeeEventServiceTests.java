@@ -59,10 +59,10 @@ public class EmployeeEventServiceTests {
 	public void should_fetch_all_events() {
 		List<EmployeeEvent> eventList = new ArrayList<EmployeeEvent>();
 		eventList.add(mockedEmployeeEvent);
-		when(employeeEventRepository.findAll()).thenReturn(eventList);
+		when(employeeEventRepository.findAllByOrderByEventTimestampAsc()).thenReturn(eventList);
 		
 		employeeEventService.getAllEmployeeEvents();
-		verify(employeeEventRepository).findAll();
+		verify(employeeEventRepository).findAllByOrderByEventTimestampAsc();
 		verify(employeeEventModelAssembler, times(1)).toCollectionModel(anyList());	
 	}
 	
