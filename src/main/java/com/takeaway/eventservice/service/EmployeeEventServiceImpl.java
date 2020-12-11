@@ -55,7 +55,7 @@ public class EmployeeEventServiceImpl implements EmployeeEventService {
 	 * @return List of all employee events found in the database
 	 */
 	public ResponseWrapper<CollectionModel<EmployeeEventModel>> getAllEmployeeEvents() {
-		List<EmployeeEvent> eventList = employeeEventRepository.findAll();
+		List<EmployeeEvent> eventList = employeeEventRepository.findAllByOrderByEventTimestampAsc();
         return new ResponseWrapper<>(employeeEventModelAssembler.toCollectionModel(eventList));
 	}
 	
@@ -66,7 +66,7 @@ public class EmployeeEventServiceImpl implements EmployeeEventService {
 	 */
 	public ResponseWrapper<CollectionModel<EmployeeEventModel>> getPagedEmployeeEvents(Pageable page) {
 		List<EmployeeEvent> eventList = new ArrayList<EmployeeEvent>();
-		Page<EmployeeEvent> pages = employeeEventRepository.findAll(page);
+		Page<EmployeeEvent> pages = employeeEventRepository.findAllByOrderByEventTimestampAsc(page);
 		eventList = pages.getContent();
         return new ResponseWrapper<>(employeeEventModelAssembler.toCollectionModel(eventList));
 	}
@@ -77,7 +77,7 @@ public class EmployeeEventServiceImpl implements EmployeeEventService {
 	 * @return List of all employee events by limit found in the database
 	 */
 	public ResponseWrapper<CollectionModel<EmployeeEventModel>> getEmployeeEventsByLimit(int limit) {
-		List<EmployeeEvent> eventList = entityManager.createQuery("SELECT e FROM EmployeeEvent e ORDER BY e.eventTimestamp",
+		List<EmployeeEvent> eventList = entityManager.createQuery("SELECT e FROM EmployeeEvent e ORDER BY e.eventTimestamp ASC",
 				EmployeeEvent.class).setMaxResults(limit).getResultList();
         return new ResponseWrapper<>(employeeEventModelAssembler.toCollectionModel(eventList));
 	}

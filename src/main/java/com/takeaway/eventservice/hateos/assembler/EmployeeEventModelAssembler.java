@@ -30,7 +30,8 @@ public class EmployeeEventModelAssembler extends RepresentationModelAssemblerSup
                 .withSelfRel());
 							       
 		eventModel.setEventId(entity.getId());
-		eventModel.setEventName(entity.getName());		
+		eventModel.setEventName(entity.getName());
+		eventModel.setEventTimestamp(entity.getEventTimestamp());		
 
         return eventModel;
 	}

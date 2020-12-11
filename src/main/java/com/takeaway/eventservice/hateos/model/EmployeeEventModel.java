@@ -1,5 +1,7 @@
 package com.takeaway.eventservice.hateos.model;
 
+import java.time.LocalDateTime;
+
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
@@ -28,4 +30,5 @@ import lombok.NoArgsConstructor;
 public class EmployeeEventModel extends RepresentationModel<EmployeeEventModel> {
 	private Long eventId;
 	private String eventName;
+	private LocalDateTime eventTimestamp;
 }
