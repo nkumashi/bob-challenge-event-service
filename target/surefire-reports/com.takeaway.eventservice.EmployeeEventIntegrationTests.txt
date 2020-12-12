@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.takeaway.eventservice.EmployeeEventIntegrationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 30.426 s - in com.takeaway.eventservice.EmployeeEventIntegrationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 72.614 s - in com.takeaway.eventservice.EmployeeEventIntegrationTests
